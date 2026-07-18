@@ -1,3 +1,15 @@
 spring:
   application:
     name: digital-banking
+  datasource:
+    url: jdbc:postgresql://localhost:5432/digital_banking_db
+    username: postgres
+    password: said1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always

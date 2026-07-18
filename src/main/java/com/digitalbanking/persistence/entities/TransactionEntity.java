@@ -1,11 +1,12 @@
 package com.digitalbanking.persistence.entities;
 
+import com.digitalbanking.persistence.entities.base.AuditEntity;
 import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
-public class TransactionEntity {
+public class TransactionEntity extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

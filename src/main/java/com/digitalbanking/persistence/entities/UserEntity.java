@@ -19,6 +19,6 @@ public class UserEntity extends AuditEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
     private String phoneNumber;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "owner")
     private List<AccountEntity> accounts;
 }

@@ -13,6 +13,7 @@ public class AccountEntity extends AuditEntity {
     private UUID id;
     private String accountNumber;
     private Double balance;
+    @Enumerated(EnumType.STRING)
     private AccountStatus status;
     @ManyToOne
     private UserEntity owner;
