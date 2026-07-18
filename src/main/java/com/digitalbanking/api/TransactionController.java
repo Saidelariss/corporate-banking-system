@@ -19,6 +19,6 @@ public class TransactionController {
 
     @PostMapping
     TransferResponse doTransfer(@RequestBody @Valid TransferRequest request) {
-        return transferService.doTransfer(request);
+        return transferService.transfer(request);
     }
 }

@@ -19,22 +19,25 @@ public class TransferService {
 
 
     @Transactional
-    public TransferResponse doTransfer(TransferRequest request) {
-        AccountEntity debtorAccountEntity = accountRepository.findByAccountNumber(request.getDebtorAccountNumber())
+    public TransferResponse transfer(TransferRequest request) {
+        AccountEntity debtor = accountRepository.findByAccountNumber(request.getDebtorAccountNumber())
                 .orElseThrow(() -> new FunctionalError("debtor account number " + request.getDebtorAccountNumber() + " not found"));
 
-        AccountEntity creditorAccountEntity = accountRepository.findByAccountNumber(request.getCreditorAccountNumber())
+        AccountEntity creditor = accountRepository.findByAccountNumber(request.getCreditorAccountNumber())
                 .orElseThrow(() -> new FunctionalError("creditor account number " + request.getCreditorAccountNumber() + " not found"));
 
-        if (debtorAccountEntity.getBalance() < request.getAmount()) throw new FunctionalError("balance not sufficient");
+        if (debtor.getBalance() < request.getAmount()) throw new FunctionalError("balance not sufficient");
 
-        debtorAccountEntity.setBalance(debtorAccountEntity.getBalance() - request.getAmount());
-        creditorAccountEntity.setBalance(creditorAccountEntity.getBalance() + request.getAmount());
+        debtor.setBalance(debtor.getBalance() - request.getAmount());
+        creditor.setBalance(creditor.getBalance() + request.getAmount());
+
+        accountRepository.save(debtor);
+        accountRepository.save(creditor);
 
         TransactionEntity transactionEntity = TransactionEntity.builder()
                 .amount(request.getAmount())
-                .creditorAccount(creditorAccountEntity)
-                .debtorAccount(debtorAccountEntity)
+                .creditorAccount(creditor)
+                .debtorAccount(debtor)
                 .motif(request.getMotif())
                 .build();
 
