@@ -8,8 +8,8 @@
 		<version>3.5.16</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.corporatebanking</groupId>
-	<artifactId>corporate-banking</artifactId>
+	<groupId>com.digitalebanking</groupId>
+	<artifactId>digital-banking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>

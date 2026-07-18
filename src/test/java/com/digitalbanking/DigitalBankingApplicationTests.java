@@ -1,10 +1,10 @@
-package com.corporatebanking;
+package com.digitalbanking;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CorporateBankingApplicationTests {
+class DigitalBankingApplicationTests {
 
 	@Test
 	void contextLoads() {

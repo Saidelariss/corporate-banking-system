@@ -1,13 +1,13 @@
-package com.corporatebanking;
+package com.digitalbanking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CorporateBankingApplication {
+public class DigitalBankingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CorporateBankingApplication.class, args);
+		SpringApplication.run(DigitalBankingApplication.class, args);
 	}
 
 }
