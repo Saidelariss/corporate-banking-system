@@ -2,6 +2,7 @@ package com.digitalbanking.services;
 
 import com.digitalbanking.dtos.User;
 import com.digitalbanking.dtos.UserRequest;
+import com.digitalbanking.enums.Role;
 import com.digitalbanking.persistence.entities.UserEntity;
 import com.digitalbanking.persistence.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class UserService {
                 .password(passwordEncoder.encode(userRequest.getPassword()))
                 .phoneNumber(userRequest.getPhoneNumber())
                 .enabled(true)
+                .role(Role.CUSTOMER)
                 .build();
 
         return userRepository.save(userEntity).toUser();
