@@ -3,8 +3,8 @@ spring:
     name: digital-banking
   datasource:
     url: jdbc:postgresql://localhost:5432/digital_banking_db
-    username: postgres
-    password: said1234
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: create

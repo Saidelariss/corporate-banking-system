@@ -3,8 +3,10 @@ package com.digitalbanking.api;
 import com.digitalbanking.dtos.User;
 import com.digitalbanking.dtos.UserRequest;
 import com.digitalbanking.services.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +18,7 @@ public class AuthenticationController {
 
 
     @PostMapping("/register")
-    public User registerUser(UserRequest userRequest) {
+    public User registerUser(@RequestBody @Valid UserRequest userRequest) {
         return userService.registerUser(userRequest);
     }
 }

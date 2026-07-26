@@ -25,6 +25,7 @@ public class UserEntity extends AuditEntity {
     private boolean enabled = false;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(unique = true)
     private String phoneNumber;
     @OneToMany(mappedBy = "owner")
     private List<AccountEntity> accounts;
@@ -33,7 +34,7 @@ public class UserEntity extends AuditEntity {
         return User.builder()
                 .id(this.id)
                 .firstName(this.firstName)
-                .lastName(this.firstName)
+                .lastName(this.lastName)
                 .phoneNumber(this.phoneNumber)
                 .role(this.role)
                 .enabled(this.enabled)
