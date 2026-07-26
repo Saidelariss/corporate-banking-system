@@ -6,8 +6,6 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Data
 public class TransferRequest {
     @NotBlank(message = "debtor account number must not be blank")
@@ -16,7 +14,7 @@ public class TransferRequest {
     private String creditorAccountNumber;
     @NotNull(message = "amount must not be null")
     @Positive(message = "amount must be positive")
-    private BigDecimal amount;
+    private Double amount;
     @Size(max = 140, message = "motif must not exceed 140 characters")
     private String motif;
 }
