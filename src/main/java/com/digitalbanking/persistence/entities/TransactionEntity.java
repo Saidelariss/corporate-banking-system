@@ -5,6 +5,7 @@ import com.digitalbanking.persistence.entities.base.AuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
@@ -21,7 +22,7 @@ public class TransactionEntity extends AuditEntity {
     private AccountEntity debtorAccount;
     @ManyToOne
     private AccountEntity creditorAccount;
-    private Double amount;
+    private BigDecimal amount;
     private String motif;
 
     public TransferResponse toTransferResponse() {

@@ -3,6 +3,7 @@ package com.digitalbanking.services;
 import com.digitalbanking.dtos.User;
 import com.digitalbanking.dtos.UserRequest;
 import com.digitalbanking.enums.Role;
+import com.digitalbanking.exceptions.FunctionalError;
 import com.digitalbanking.persistence.entities.UserEntity;
 import com.digitalbanking.persistence.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,9 @@ public class UserService {
 
 
     public User registerUser(UserRequest userRequest) {
+        if (userRepository.findByPhoneNumber(userRequest.getPhoneNumber()).isPresent())
+            throw new FunctionalError("phone number already registered");
+
         UserEntity userEntity = UserEntity.builder()
                 .firstName(userRequest.getFirstName())
                 .lastName(userRequest.getLastName())
