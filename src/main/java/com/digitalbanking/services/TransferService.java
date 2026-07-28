@@ -48,8 +48,8 @@ public class TransferService {
 
         if (debtor.getBalance().compareTo(request.getAmount()) < 0) throw new FunctionalError("balance not sufficient");
 
-        debtor.setBalance(debtor.getBalance().subtract(request.getAmount()));
-        creditor.setBalance(creditor.getBalance().add(request.getAmount()));
+        debtor.setBalance(debtor.getBalance()-request.getAmount());
+        creditor.setBalance(creditor.getBalance() + request.getAmount());
 
         accountRepository.save(debtor);
         accountRepository.save(creditor);

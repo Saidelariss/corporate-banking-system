@@ -1,12 +1,16 @@
 package com.digitalbanking.services;
 
+import com.digitalbanking.dtos.AuthenticationRequest;
 import com.digitalbanking.dtos.User;
 import com.digitalbanking.dtos.UserRequest;
 import com.digitalbanking.enums.Role;
 import com.digitalbanking.exceptions.FunctionalError;
 import com.digitalbanking.persistence.entities.UserEntity;
 import com.digitalbanking.persistence.repositories.UserRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-
+    private final AuthenticationProvider authenticationProvider;
 
     public User registerUser(UserRequest userRequest) {
         if (userRepository.findByPhoneNumber(userRequest.getPhoneNumber()).isPresent())
@@ -31,5 +35,10 @@ public class UserService {
                 .build();
 
         return userRepository.save(userEntity).toUser();
+    }
+
+    public void authenticate(@Valid AuthenticationRequest authenticationRequest) {
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken()
+        authenticationRequest.
     }
 }

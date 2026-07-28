@@ -21,6 +21,8 @@ public class UserEntity extends AuditEntity {
     private UUID id;
     private String firstName;
     private String lastName;
+    @Column(unique = true,nullable = false)
+    private String username;
     private String password;
     private boolean enabled = false;
     @Enumerated(EnumType.STRING)
